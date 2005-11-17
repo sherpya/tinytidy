@@ -133,8 +133,6 @@ static PyObject *parseString(PyObject *self, PyObject *args)
     tidyBufFree(&output);
     tidyBufFree(&errbuf);
     tidyRelease(tdoc);
-
-    Py_INCREF(res);
     return res;
 }
 
