@@ -16,7 +16,7 @@ Description: Python wrapper for TidyLib
  by depending upon the version specific pythonX.Y-utidylib.
 
 Package: python2.1-tinytidy
-Architecture: all
+Architecture: any
 Depends: python2.1, ${shlibs:Depends}
 Description: Minimal Python wrapper for TidyLib
  tinytidy is a minimal Python wrapper for TidyLib, a library from the HTML Tidy
@@ -25,7 +25,7 @@ Description: Minimal Python wrapper for TidyLib
  This version should be used with python2.1
 
 Package: python2.2-tinytidy
-Architecture: all
+Architecture: any
 Depends: python2.2, ${shlibs:Depends}
 Description: Minimal Python wrapper for TidyLib
  tinytidy is a minimal Python wrapper for TidyLib, a library from the HTML Tidy
@@ -34,7 +34,7 @@ Description: Minimal Python wrapper for TidyLib
  This version should be used with python2.2
 
 Package: python2.3-tinytidy
-Architecture: all
+Architecture: any
 Depends: python2.3, ${shlibs:Depends}
 Description: Minimal Python wrapper for TidyLib
  tinytidy is a minimal Python wrapper for TidyLib, a library from the HTML Tidy
