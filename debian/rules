@@ -1,0 +1,15 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+# Debian rules file for python tinytidy
+#export DH_VERBOSE=1
+
+################################################################################
+# CDBS File Inclusions and Variable Declarations
+################################################################################
+
+DEB_PYTHON_VERSIONS = 2.1 2.2 2.3
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/class/python-distutils.mk
+
+clean::
+	rm -fr ./build

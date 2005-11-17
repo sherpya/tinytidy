@@ -1,0 +1,43 @@
+Source: tinytidy
+Section: web
+Priority: optional
+Maintainer: Gianluigi Tiesi <sherpya@netfarm.it>
+Build-Depends-Indep: debhelper (>= 4), cdbs, python2.1-dev, python2.2-dev, python2.3-dev
+Standards-Version: 3.6.2.1
+
+Package: python-tinytidy
+Architecture: all
+Depends: python (>= 2.1), python2.1-tinytidy
+Description: Python wrapper for TidyLib
+ uTidylib is a Python wrapper for TidyLib, a library from the HTML Tidy
+ project.  This allows you to "tidy" HTML files through a Pythonic interface.
+ .
+ This package is responsible for tracking the default Python installation 
+ by depending upon the version specific pythonX.Y-utidylib.
+
+Package: python2.1-tinytidy
+Architecture: all
+Depends: python2.1, ${shlibs:Depends}
+Description: Minimal Python wrapper for TidyLib
+ tinytidy is a minimal Python wrapper for TidyLib, a library from the HTML Tidy
+ project. Implements only the parseString function.
+ .
+ This version should be used with python2.1
+
+Package: python2.2-tinytidy
+Architecture: all
+Depends: python2.2, ${shlibs:Depends}
+Description: Minimal Python wrapper for TidyLib
+ tinytidy is a minimal Python wrapper for TidyLib, a library from the HTML Tidy
+ project. Implements only the parseString function.
+ .
+ This version should be used with python2.2
+
+Package: python2.3-tinytidy
+Architecture: all
+Depends: python2.3, ${shlibs:Depends}
+Description: Minimal Python wrapper for TidyLib
+ tinytidy is a minimal Python wrapper for TidyLib, a library from the HTML Tidy
+ project. Implements only the parseString function.
+ .
+ This version should be used with python2.3
