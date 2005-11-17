@@ -1,5 +1,5 @@
 /*
- * Python Tiny TidyLib wrapper version 0.1
+ * Python TinyTidy: a minimal TidyLib wrapper version 0.1
  * Copyright (c) 2005 Gianluigi Tiesi <sherpya@netfarm.it>
  * 
  * Inspired by http://utidylib.berlios.de/

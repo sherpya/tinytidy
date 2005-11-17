@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- Mode: Python; tab-width: 4 -*-
 #
-# DistUtil Setup for TinyTidy module
+# DistUtils Setup for TinyTidy Python Module
 # Copyright (C) 2005 Sherpya <sherpya@netfarm.it>
 #
 # This program is free software; you can redistribute it and/or modify
