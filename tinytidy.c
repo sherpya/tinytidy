@@ -30,6 +30,9 @@
 #define PyMODINIT_FUNC void
 #endif
 
+/* Yes I like to abuse of gcc preprocessor */
+#define TIDY_SET_PYERR() { PyErr_SetString(PyExc_ValueError, (const char *) errbuf.bp); }
+
 #define TDOC_RETURN() \
 { \
     Py_DECREF(item); \
@@ -39,7 +42,19 @@
     return res; \
 }
 
-#define TIDY_SET_PYERR() { PyErr_SetString(PyExc_ValueError, (const char *) errbuf.bp); }
+#define PY_TO_TIDY(py_check, tidy_type, py_converter, mustbe) \
+{ \
+    if (!Py##py_check(value)) \
+    { \
+        PyErr_Format(PyExc_ValueError, "Option '%s' must be " mustbe, PyString_AsString(item)); \
+        TDOC_RETURN(); \
+    } \
+    if (!tidyOptSet##tidy_type(tdoc, tidyOptGetId(option), Py##py_converter(value))) \
+    { \
+        TIDY_SET_PYERR(); \
+        TDOC_RETURN(); \
+    } \
+}
 
 static PyObject *TinyTidyError;
 
@@ -53,7 +68,6 @@ static PyObject *parseString(PyObject *self, PyObject *args)
     PyObject *key_list = NULL, *item = NULL, *value = NULL;
     TidyBuffer output = {0};
     TidyBuffer errbuf = {0};
-
 
     if (!PyArg_ParseTuple(args, "s#|O", &cp, &len, &arglist))
         return NULL;
@@ -90,51 +104,14 @@ static PyObject *parseString(PyObject *self, PyObject *args)
         switch (tidyOptGetType(option))
         {
             case TidyString:
-            {
-                if (!PyString_Check(value))
-                {
-                    PyErr_Format(PyExc_ValueError, "Option '%s' must be a String", PyString_AsString(item));
-                    TDOC_RETURN();
-
-                }
-                if (!tidyOptSetValue(tdoc, tidyOptGetId(option), PyString_AsString(value)))
-                {
-                    TIDY_SET_PYERR();
-                    TDOC_RETURN();
-                }
+                PY_TO_TIDY(String_Check, Value, String_AsString, "a String");
                 break;
-            }
             case TidyInteger:
-            {
-                if (!PyInt_Check(value))
-                {
-                    PyErr_Format(PyExc_ValueError, "Option '%s' must be an Integer", PyString_AsString(item));
-                    TDOC_RETURN();
-                }
-
-                if (!tidyOptSetInt(tdoc, tidyOptGetId(option), PyInt_AsLong(value)))
-                {
-                    TIDY_SET_PYERR();
-                    TDOC_RETURN();
-                }
+                PY_TO_TIDY(Int_Check, Int, Int_AsLong, "an Integer");
                 break;
-            }
-
             case TidyBoolean:
-            {
-                if (!PyInt_Check(value))
-                {
-                    PyErr_Format(PyExc_ValueError, "Option '%s' must be a Boolean or integer",
-                                 PyString_AsString(item));
-                    TDOC_RETURN();
-                }
-                if (!tidyOptSetBool(tdoc, tidyOptGetId(option), PyInt_AsLong(value)))
-                {
-                    TIDY_SET_PYERR();
-                    TDOC_RETURN();
-                }
+                PY_TO_TIDY(Int_Check, Bool, Int_AsLong, "a Boolean or an Integer");
                 break;
-            }
             default:
             {
                 PyErr_Format(PyExc_RuntimeError,
