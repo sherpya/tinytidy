@@ -1,10 +1,10 @@
 /*
  * Python Tiny TidyLib wrapper version 0.1
- * 
- * Inspired from http://utidylib.berlios.de/
- * but implements only parseString methods.
- * It can be used with python >= 2.1
  * Copyright (c) 2005 Gianluigi Tiesi <sherpya@netfarm.it>
+ * 
+ * Inspired by http://utidylib.berlios.de/
+ * but only parseString method implemented.
+ * It can be used also with python 2.1
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
