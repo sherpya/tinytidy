@@ -1,6 +1,6 @@
 /*
  * Python TinyTidy: a minimal TidyLib wrapper version 0.1
- * Copyright (c) 2005 Gianluigi Tiesi <sherpya@netfarm.it>
+ * Copyright (c) 2005-2006 Gianluigi Tiesi <sherpya@netfarm.it>
  * 
  * Inspired by http://utidylib.berlios.de/
  * but only parseString method implemented.
