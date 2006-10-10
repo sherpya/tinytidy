@@ -1,10 +1,10 @@
 /*
  * Python TinyTidy: a minimal TidyLib wrapper version 0.1
  * Copyright (c) 2005-2006 Gianluigi Tiesi <sherpya@netfarm.it>
- * 
+ *
  * Inspired by http://utidylib.berlios.de/
  * but only parseString method implemented.
- * It can be used also with python 2.1
+ * This code is python2.1 compatible
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -80,7 +80,7 @@ static PyObject *parseString(PyObject *self, PyObject *args)
     tdoc = tidyCreate();
     tidySetErrorBuffer(tdoc, &errbuf);
 
-    if (!arglist) goto im_so_lazy; /* Options not provided */;
+    if (!arglist) goto im_so_lazy; /* no args provided */
 
     key_list = PyDict_Keys(arglist);
     list_size = PyList_Size(key_list);
@@ -114,16 +114,16 @@ static PyObject *parseString(PyObject *self, PyObject *args)
             default:
             {
                 PyErr_Format(PyExc_RuntimeError,
-                             "Something strange happened there is no option type %d",
+                             "Something strange happened, there is no option type %d",
                              tidyOptGetType(option));
                 TDOC_RETURN();
-            }          
+            }
         }
         Py_DECREF(item);
         Py_DECREF(value);
     }
 
- im_so_lazy:   
+ im_so_lazy:
     tidyParseString(tdoc, cp);
     tidyCleanAndRepair(tdoc);
     tidySaveBuffer(tdoc, &output);
