@@ -12,7 +12,7 @@ Description: Python wrapper for TidyLib
  uTidylib is a Python wrapper for TidyLib, a library from the HTML Tidy
  project.  This allows you to "tidy" HTML files through a Pythonic interface.
  .
- This package is responsible for tracking the default Python installation 
+ This package is responsible for tracking the default Python installation
  by depending upon the version specific pythonX.Y-utidylib.
 
 Package: python2.1-tinytidy
